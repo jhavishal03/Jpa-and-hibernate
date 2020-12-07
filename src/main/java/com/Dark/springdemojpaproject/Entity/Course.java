@@ -12,7 +12,7 @@ public class Course {
     private String name;
     private int fees;
 
-    public Course() {
+    protected Course() {
     }
 
     public Course(String name, int fees) {
@@ -39,4 +39,5 @@ public class Course {
     public void setFees(int fees) {
         this.fees = fees;
     }
+
 }
