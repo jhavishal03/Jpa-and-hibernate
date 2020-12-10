@@ -18,6 +18,7 @@ public class CourseRepositoryTest {
     public void findById(){
         Course course=repository.findById(10001L);
         assertEquals(course.getName(),"DSA");
+        assertEquals(course.getFees(),2500);
     }
     @Test
     @DirtiesContext   //to avoid dirty read
@@ -25,4 +26,16 @@ public class CourseRepositoryTest {
         repository.deleteById(10003L);
         assertNull(repository.findById(10003L));
     }
+    @Test
+    @DirtiesContext   //to avoid dirty read
+    public void save() {
+        Course course=repository.findById(10001L);
+        assertEquals(course.getName(),"DSA");
+        assertEquals(course.getFees(),2500);
+         course.setName("DSA Advanced");
+         course.setFees(3500);
+        assertEquals(course.getName(),"DSA Advanced");
+        assertEquals(course.getFees(),3500);
+    }
+
 }
