@@ -1,11 +1,13 @@
 package com.Dark.springdemojpaproject.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@NamedQueries(value = {
+        @NamedQuery(name = "fetch_all_table",query = "select c from Course c"),
+        @NamedQuery(name = "fetch_by_fees",query = "select c from Course c where fees > 1000")
+}
+)
 public class Course {
     @Id
     @GeneratedValue
@@ -15,6 +17,14 @@ public class Course {
     private int fees;
 
     protected Course() {
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "name='" + name + '\'' +
+                ", fees=" + fees +
+                '}';
     }
 
     public Course(String name, int fees) {
