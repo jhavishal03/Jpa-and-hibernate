@@ -21,10 +21,7 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course{" +
-                "name='" + name + '\'' +
-                ", fees=" + fees +
-                '}';
+        return String.format("Course[%-50s%10d]",name,fees);
     }
 
     public Course(String name, int fees) {
