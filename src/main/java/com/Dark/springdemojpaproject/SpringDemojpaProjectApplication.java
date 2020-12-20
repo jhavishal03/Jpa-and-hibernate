@@ -2,6 +2,7 @@ package com.Dark.springdemojpaproject;
 
 import com.Dark.springdemojpaproject.Entity.Course;
 import com.Dark.springdemojpaproject.Repository.CourseRepository;
+import com.Dark.springdemojpaproject.Repository.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringDemojpaProjectApplication implements CommandLineRunner {
     @Autowired
 	CourseRepository repository;
+    @Autowired
+	StudentRepository studentRepository;
     private Logger logger= LoggerFactory.getLogger(this.getClass());
 	public static void main(String[] args)
 	{
@@ -23,6 +26,7 @@ public class SpringDemojpaProjectApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Course course=repository.findById(10001L);
 		logger.info("Course 10001--> ",course);
+		studentRepository.saveStudentWithPassport();
 //		repository.deleteById(10001L);
 		repository.saveCourse(new Course("Android ",700));
 	}

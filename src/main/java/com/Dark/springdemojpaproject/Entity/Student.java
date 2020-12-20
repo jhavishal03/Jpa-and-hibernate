@@ -1,9 +1,6 @@
 package com.Dark.springdemojpaproject.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Student {
@@ -15,6 +12,20 @@ public class Student {
     private  String name;
 
     private  int age;
+     @OneToOne(fetch = FetchType.LAZY)
+     private Passport passport;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Passport getPassport() {
+        return passport;
+    }
+
+    public void setPassport(Passport passport) {
+        this.passport = passport;
+    }
 
     public Student() {
     }
