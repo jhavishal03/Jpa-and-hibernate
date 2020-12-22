@@ -1,6 +1,8 @@
 package com.Dark.springdemojpaproject.Entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Student {
@@ -14,6 +16,11 @@ public class Student {
     private  int age;
      @OneToOne(fetch = FetchType.LAZY)
      private Passport passport;
+     @ManyToMany
+     @JoinTable(name = "STUDENT_COURSE",
+        joinColumns = @JoinColumn(name = "STUDENT_ID"),
+        inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
+     private List<Course> courses=new ArrayList<>();
 
     public void setId(Long id) {
         this.id = id;
@@ -25,6 +32,18 @@ public class Student {
 
     public void setPassport(Passport passport) {
         this.passport = passport;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void addCourses(Course course) {
+        this.courses.add(course);
+    }
+
+    public void removeCourses(Course course) {
+        this.courses.remove(course);
     }
 
     public Student() {

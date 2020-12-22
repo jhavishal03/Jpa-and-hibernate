@@ -1,5 +1,6 @@
 package com.Dark.springdemojpaproject.Repository;
 
+import com.Dark.springdemojpaproject.Entity.Passport;
 import com.Dark.springdemojpaproject.Entity.Student;
 import com.Dark.springdemojpaproject.SpringDemojpaProjectApplication;
 import org.junit.jupiter.api.Test;
@@ -22,5 +23,12 @@ public class StudentRepositoryTest {
         Student student=manager.find(Student.class,20002L);
         logger.info("student -> {}", student);
         logger.info("passport -> {}", student.getPassport());
+    }
+    @Test
+    @Transactional
+    public void retrievePassportAndStudentAssociated(){
+        Passport passport=manager.find(Passport.class,30003L);
+        logger.info("passport -> {}", passport);
+        logger.info("student -> {}", passport.getStudent());
     }
 }

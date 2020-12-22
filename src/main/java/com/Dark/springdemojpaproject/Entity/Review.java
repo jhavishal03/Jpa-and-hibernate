@@ -1,9 +1,6 @@
 package com.Dark.springdemojpaproject.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Review {
@@ -14,7 +11,8 @@ public class Review {
     private  int rating;
 
     private  String description;
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Course course;
     public Review() {
     }
 
@@ -41,6 +39,14 @@ public class Review {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     @Override
